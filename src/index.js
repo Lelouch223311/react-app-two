@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <div className="App">
+      <div >
         <header className="App-header">
           {/* <Counter /> */}
         </header>

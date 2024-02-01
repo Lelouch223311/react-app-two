@@ -3,13 +3,15 @@ import { useState, useEffect } from 'react';
 import { APIKEY } from './env.js';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { CircularProgress, Input } from '@mui/material';
+
 import './App.scss';
 import { fetchData } from './actions';
 
 function App() {
   // const [movies, setMovies] = useState([]);
   const [searchField, setSearchField] = useState('');
-  const URL = `https://www.omdbapi.com/?s=${searchField}&apikey=c83647df`;
+  const URL = `https://www.omdbapi.com/?s=${searchField}&apikey=${APIKEY}`;
   
   const movies =  useSelector(state => state.movies);
 
@@ -36,9 +38,9 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onChange={handleChange} />
+      <Input type="text" onChange={handleChange} />
       {
-        movies.pending ? "Loading..." :
+        movies.pending ? <CircularProgress /> :
          movies.error ? movies.error :
           <Movies movies={movies.movies} />
 
